@@ -1,0 +1,4 @@
+./match-statistics-parse/bin/
+./match-statistics-parse/obj/
+./match-statistics-parse-tests/bin/
+./match-statistics-parse-tests/obj/
