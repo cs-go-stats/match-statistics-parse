@@ -13,6 +13,10 @@
     <PackageReference Include="CSGOStats.Infrastructure.PageParse" Version="0.2.1" />
     <PackageReference Include="CSGOStats.Services.Core" Version="0.1.1" />
     <PackageReference Include="CSGOStats.Services.HistoryParse.Objects" Version="1.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
   <ItemGroup>

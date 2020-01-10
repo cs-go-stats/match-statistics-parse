@@ -11,7 +11,12 @@ namespace CSGOStats.Services.MatchStatisticsParse.Aggregate.Game.Entities
         public Statistics(string title, string description)
         {
             Title = title.NotNull(nameof(title));
-            Description = description.NotNull(nameof(description));
+            Description = description;
+        }
+
+        public Statistics(string title)
+            : this(title, null)
+        {
         }
     }
 }
