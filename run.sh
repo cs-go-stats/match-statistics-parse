@@ -1,6 +1,6 @@
 category=services
 service=match-statistics-parse
-version=0.1.0
+version=0.1.1
 
 cd ./../../automation_scripts
 
