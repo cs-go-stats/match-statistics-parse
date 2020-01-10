@@ -79,8 +79,9 @@ namespace CSGOStats.Services.MatchStatisticsParse.Data.Mongo
             BsonClassMap.RegisterClassMap<Statistics>(mapper =>
             {
                 mapper.MapRequired(x => x.Title);
-                mapper.MapRequired(x => x.Description);
+                mapper.MapOptional(x => x.Description);
                 mapper.MapCreator(x => new Statistics(x.Title, x.Description));
+                mapper.MapCreator(x => new Statistics(x.Title));
             });
 
             BsonClassMap.RegisterClassMap<Score>(mapper =>

@@ -10,7 +10,7 @@ namespace CSGOStats.Services.MatchStatisticsParse.Parsing.MapPage.Mapping
         internal const string Code = nameof(StatisticsCodeMapper);
 
         public object Map(HtmlNode root) =>
-            new Regex(@"st-[a-z]+")
+            new Regex(@"(?<code>st-[a-z]+)")
                 .Match(root.GetAttributeValue("class", null))
                 .ForSucceeded()
                 .Groups["code"].Value;
