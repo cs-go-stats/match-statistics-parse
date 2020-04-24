@@ -1,5 +1,5 @@
-﻿using CSGOStats.Infrastructure.DataAccess.Contexts.Mongo;
-using CSGOStats.Services.Core.Handling.Entities;
+﻿using CSGOStats.Infrastructure.Core.Data.Entities;
+using CSGOStats.Infrastructure.Core.Extensions;
 using CSGOStats.Services.MatchStatisticsParse.Aggregate.Game.Entities;
 using MongoDB.Bson.Serialization;
 
@@ -24,10 +24,12 @@ namespace CSGOStats.Services.MatchStatisticsParse.Data.Mongo
                 mapper.MapOptional(x => x.Maps);
                 mapper.MapOptional(x => x.Statistics);
                 mapper.MapOptional(x => x.Score);
-                mapper.MapCreator(x => new Game(x.Id, x.Version, x.Link, x.DateTime, x.Event, x.Rosters, x.Maps, x.Statistics, x.Score));
+                mapper.MapOptional(x => x.MapScores);
                 mapper.MapCreator(x => new Game(x.Id, x.Version));
                 mapper.MapCreator(x => new Game(x.Id, x.Version, x.Link));
                 mapper.MapCreator(x => new Game(x.Id, x.Version, x.Link, x.DateTime, x.Event, x.Maps));
+                mapper.MapCreator(x => new Game(x.Id, x.Version, x.Link, x.DateTime, x.Event, x.Rosters, x.Maps, x.Statistics, x.MapScores));
+                mapper.MapCreator(x => new Game(x.Id, x.Version, x.Link, x.DateTime, x.Event, x.Rosters, x.Maps, x.Statistics, x.Score, x.MapScores));
             });
 
             BsonClassMap.RegisterClassMap<Event>(mapper =>
@@ -73,7 +75,9 @@ namespace CSGOStats.Services.MatchStatisticsParse.Data.Mongo
                 mapper.MapRequired(x => x.Player);
                 mapper.MapRequired(x => x.Statistics);
                 mapper.MapRequired(x => x.Value);
+                mapper.MapOptional(x => x.Map);
                 mapper.MapCreator(x => new Performance(x.Team, x.Player, x.Statistics, x.Value));
+                mapper.MapCreator(x => new Performance(x.Team, x.Player, x.Statistics, x.Value, x.Map));
             });
 
             BsonClassMap.RegisterClassMap<Statistics>(mapper =>
@@ -99,6 +103,13 @@ namespace CSGOStats.Services.MatchStatisticsParse.Data.Mongo
                 mapper.MapRequired(x => x.Half2);
                 mapper.MapRequired(x => x.Overtime);
                 mapper.MapCreator(x => new TeamResult(x.Name, x.Total, x.Half1, x.Half2, x.Overtime));
+            });
+
+            BsonClassMap.RegisterClassMap<MapScore>(mapper =>
+            {
+                mapper.MapRequired(x => x.Map);
+                mapper.MapRequired(x => x.Score);
+                mapper.MapCreator(x => new MapScore(x.Map, x.Score));
             });
         }
     }

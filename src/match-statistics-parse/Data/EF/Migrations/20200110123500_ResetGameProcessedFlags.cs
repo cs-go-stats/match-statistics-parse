@@ -1,5 +1,4 @@
-﻿using CSGOStats.Services.MatchStatisticsParse.Data.Entities;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CSGOStats.Services.MatchStatisticsParse.Data.EF.Migrations
 {
@@ -8,10 +7,10 @@ namespace CSGOStats.Services.MatchStatisticsParse.Data.EF.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.UpdateData(
-                table: nameof(ScheduledGameParse),
-                keyColumn: nameof(ScheduledGameParse.IsProcessed),
+                table: "ScheduledGameParse",
+                keyColumn: "IsProcessed",
                 keyValue: true,
-                column: nameof(ScheduledGameParse.IsProcessed),
+                column: "IsProcessed",
                 value: false,
                 schema: Service.Name);
         }

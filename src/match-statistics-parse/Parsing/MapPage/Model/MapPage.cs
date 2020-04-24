@@ -1,5 +1,5 @@
-﻿using CSGOStats.Infrastructure.PageParse.Page.Parsing;
-using CSGOStats.Infrastructure.PageParse.Structure.Containers;
+﻿using CSGOStats.Infrastructure.Core.PageParse.Page.Parse;
+using CSGOStats.Infrastructure.Core.PageParse.Page.Structure.Containers;
 using CSGOStats.Services.MatchStatisticsParse.Parsing.MapPage.Mapping;
 using CSGOStats.Services.MatchStatisticsParse.Parsing.MapPage.Model.Header;
 using CSGOStats.Services.MatchStatisticsParse.Parsing.MapPage.Model.Stats;

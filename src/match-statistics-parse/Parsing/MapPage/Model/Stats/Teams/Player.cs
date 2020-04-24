@@ -1,5 +1,5 @@
-﻿using CSGOStats.Infrastructure.PageParse.Extraction;
-using CSGOStats.Infrastructure.PageParse.Page.Parsing;
+﻿using CSGOStats.Infrastructure.Core.PageParse.Extraction;
+using CSGOStats.Infrastructure.Core.PageParse.Page.Parse;
 
 namespace CSGOStats.Services.MatchStatisticsParse.Parsing.MapPage.Model.Stats.Teams
 {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text.RegularExpressions;
-using CSGOStats.Extensions.Extensions;
-using CSGOStats.Infrastructure.PageParse.Mapping;
+using CSGOStats.Infrastructure.Core.Extensions;
+using CSGOStats.Infrastructure.Core.PageParse.Mapping;
 using CSGOStats.Services.MatchStatisticsParse.Parsing.MatchPage.Model.Veto;
 using HtmlAgilityPack;
 

@@ -1,5 +1,4 @@
-﻿using CSGOStats.Infrastructure.DataAccess.Contexts.EF;
-using Microsoft.EntityFrameworkCore;
+﻿using CSGOStats.Infrastructure.Core.Data.Storage.Contexts.EF;
 
 namespace CSGOStats.Services.MatchStatisticsParse.Data.EF
 {
@@ -8,11 +7,6 @@ namespace CSGOStats.Services.MatchStatisticsParse.Data.EF
         public MatchStatisticsDataContext(PostgreConnectionSettings settings) 
             : base(settings)
         {
-        }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.ApplyConfigurationsFromAssembly(typeof(MatchStatisticsDataContext).Assembly);
         }
     }
 

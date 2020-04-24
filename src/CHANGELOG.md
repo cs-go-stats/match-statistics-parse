@@ -1,3 +1,6 @@
+# v1.0.0
+## Changes
+
 # v0.1.1
 ## Changed
 * Fixed wrong map's link container for `MatchPage` model.

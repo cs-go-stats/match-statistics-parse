@@ -1,27 +1,30 @@
 ﻿using System;
 using System.Threading.Tasks;
-using CSGOStats.Extensions.Extensions;
-using CSGOStats.Extensions.Validation;
-using CSGOStats.Infrastructure.DataAccess.Repositories;
-using CSGOStats.Infrastructure.Messaging.Handling;
-using CSGOStats.Services.Core.Handling.Storage;
+using CSGOStats.Infrastructure.Core.Communication.Handling;
+using CSGOStats.Infrastructure.Core.Context;
+using CSGOStats.Infrastructure.Core.Data.Storage;
+using CSGOStats.Infrastructure.Core.Extensions;
+using CSGOStats.Infrastructure.Core.Validation;
 using CSGOStats.Services.HistoryParse.Objects;
 using CSGOStats.Services.MatchStatisticsParse.Aggregate.Game.Entities;
-using CSGOStats.Services.MatchStatisticsParse.Data.Entities;
+using CSGOStats.Services.MatchStatisticsParse.Objects;
+using CSGOStats.Services.MatchStatisticsParse.Scheduling;
 
 namespace CSGOStats.Services.MatchStatisticsParse.Handlers
 {
     public class HistoricalMatchHandler : BaseMessageHandler<HistoricalMatchParsed>
     {
         private readonly Upsert<Game, Guid> _gameUpsert;
-        private readonly IRepository<ScheduledGameParse> _scheduleGameParseRepository;
+        private readonly IDelayState _delayState;
 
         public HistoricalMatchHandler(
+            ExecutionContext executionContext,
             Upsert<Game, Guid> gameUpsert,
-            IRepository<ScheduledGameParse> scheduleGameParseRepository)
+            IDelayState delayState)
+            : base(executionContext)
         {
             _gameUpsert = gameUpsert.NotNull(nameof(gameUpsert));
-            _scheduleGameParseRepository = scheduleGameParseRepository.NotNull(nameof(scheduleGameParseRepository));
+            _delayState = delayState.NotNull(nameof(delayState));
         }
 
         public override async Task HandleAsync(HistoricalMatchParsed message)
@@ -30,23 +33,7 @@ namespace CSGOStats.Services.MatchStatisticsParse.Handlers
                 key: message.Link.Guid(),
                 updater: x => x.OnHistoricalMatchParsedUpdate(message));
 
-            await ScheduledParseAsync(game);
-        }
-
-        private async Task ScheduledParseAsync(Game game)
-        {
-            var scheduleEntity = await _scheduleGameParseRepository.FindAsync(game.Id);
-            if (scheduleEntity != null)
-            {
-                return;
-            }
-
-            await _scheduleGameParseRepository.AddAsync(
-                id: game.Id,
-                entity: new ScheduledGameParse(
-                    id: game.Id,
-                    link: game.Link,
-                    isProcessed: false));
+            await _delayState.SchedulePublishAsync(new ParseMatch(game.Id).ToDeliverState());
         }
     }
 }

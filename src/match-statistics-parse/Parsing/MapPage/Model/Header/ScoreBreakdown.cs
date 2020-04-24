@@ -1,4 +1,4 @@
-﻿using CSGOStats.Extensions.Validation;
+﻿using CSGOStats.Infrastructure.Core.Validation;
 
 namespace CSGOStats.Services.MatchStatisticsParse.Parsing.MapPage.Model.Header
 {

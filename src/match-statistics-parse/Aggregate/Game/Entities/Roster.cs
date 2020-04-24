@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using CSGOStats.Extensions.Validation;
+using CSGOStats.Infrastructure.Core.Validation;
 
 namespace CSGOStats.Services.MatchStatisticsParse.Aggregate.Game.Entities
 {

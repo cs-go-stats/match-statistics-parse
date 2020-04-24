@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
-using CSGOStats.Infrastructure.PageParse.Extraction;
-using CSGOStats.Infrastructure.PageParse.Page.Parsing;
+using CSGOStats.Infrastructure.Core.PageParse.Extraction;
+using CSGOStats.Infrastructure.Core.PageParse.Page.Parse;
 
 namespace CSGOStats.Services.MatchStatisticsParse.Parsing.MatchPage.Model.Header
 {

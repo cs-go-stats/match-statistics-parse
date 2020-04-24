@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
-using CSGOStats.Extensions.Validation;
-using CSGOStats.Infrastructure.PageParse.Mapping;
+using CSGOStats.Infrastructure.Core.PageParse.Mapping;
+using CSGOStats.Infrastructure.Core.Validation;
 using HtmlAgilityPack;
 
 namespace CSGOStats.Services.MatchStatisticsParse.Parsing.MapPage.Mapping

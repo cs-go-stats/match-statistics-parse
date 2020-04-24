@@ -1,5 +1,5 @@
-﻿using CSGOStats.Extensions.Extensions;
-using CSGOStats.Infrastructure.PageParse.Mapping.Specific;
+﻿using CSGOStats.Infrastructure.Core.Extensions;
+using CSGOStats.Infrastructure.Core.PageParse.Mapping.Standard;
 using HtmlAgilityPack;
 
 namespace CSGOStats.Services.MatchStatisticsParse.Parsing.MatchPage.Mapping.Header

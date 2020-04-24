@@ -1,4 +1,4 @@
-﻿using CSGOStats.Infrastructure.PageParse.Mapping.Specific;
+﻿using CSGOStats.Infrastructure.Core.PageParse.Mapping.Standard;
 
 namespace CSGOStats.Services.MatchStatisticsParse.Parsing.MatchPage.Mapping.Header
 {

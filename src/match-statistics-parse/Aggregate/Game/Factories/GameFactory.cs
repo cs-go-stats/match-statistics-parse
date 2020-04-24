@@ -1,5 +1,5 @@
 ﻿using System;
-using CSGOStats.Services.Core.Handling.Entities;
+using CSGOStats.Infrastructure.Core.Data.Entities;
 
 namespace CSGOStats.Services.MatchStatisticsParse.Aggregate.Game.Factories
 {
@@ -16,6 +16,7 @@ namespace CSGOStats.Services.MatchStatisticsParse.Aggregate.Game.Factories
             rosters: null,
             maps: null,
             statistics: null,
-            score: null);
+            score: null,
+            mapScores: null);
     }
 }

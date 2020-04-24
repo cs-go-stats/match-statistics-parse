@@ -1,4 +1,4 @@
-﻿using CSGOStats.Infrastructure.DataAccess.Contexts.Mongo;
+﻿using CSGOStats.Infrastructure.Core.Data.Storage.Contexts.Mongo;
 
 namespace CSGOStats.Services.MatchStatisticsParse.Data.Mongo
 {
